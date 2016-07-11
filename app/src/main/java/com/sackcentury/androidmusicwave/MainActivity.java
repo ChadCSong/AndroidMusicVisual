@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnPre
     VisualizerView visualizerView;
     MediaPlayer mediaPlayer;
     Random random = new Random();
+    String mp3DataUrl = "http://www.tingge123.com/mp3/2015-01-29/1422490375.mp3";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +38,7 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnPre
         final Button button = (Button) findViewById(R.id.btn_play);
         mediaPlayer = new MediaPlayer();
 
-//        visualizerView = (VisualizerView) findViewById(R.id.wavView);
-
         initVisual(relativeLayout);
-
 
         if (button != null) {
             button.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnPre
                     mediaPlayer.reset();
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                     try {
-                        mediaPlayer.setDataSource("http://www.tingge123.com/mp3/2015-01-29/1422490375.mp3");
+                        mediaPlayer.setDataSource(mp3DataUrl);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -128,33 +126,33 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnPre
             int color = Color.rgb(random.nextInt(255), random.nextInt(255), random.nextInt(255));
             mForePaint.setColor(color);
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (true) {
-                        if (mPoints != null) {
-                            for (int i = 0; i < mSpectrumNum; i++) {
-                                float height = mPoints[i * 4 + 3] + 2;
-                                if (height < getHeight() - 100) {
-                                    mPoints[i * 4 + 3] = height;
-                                }
-                            }
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    invalidate();
-                                }
-                            });
-                        }
-                        try {
-                            Thread.sleep(10);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                }
-            }).start();
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    while (true) {
+//                        if (mPoints != null) {
+//                            for (int i = 0; i < mSpectrumNum; i++) {
+//                                float height = mPoints[i * 4 + 3] + 2;
+//                                if (height < getHeight() - 100) {
+//                                    mPoints[i * 4 + 3] = height;
+//                                }
+//                            }
+//                            runOnUiThread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    invalidate();
+//                                }
+//                            });
+//                        }
+//                        try {
+//                            Thread.sleep(10);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                }
+//            }).start();
         }
 
 

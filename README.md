@@ -7,6 +7,7 @@ Result like [千千静听 Old Version on Windows](http://125.211.195.14:443/down
 
 Lib is coming soon..., This project is a Visualizer Demo. If you are interest in Visualizer, I'm very glad to communication with you.  :)
 
+Add network audio play&Visualizer.
 
 
 License
